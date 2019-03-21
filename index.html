@@ -2,10 +2,25 @@
 
 <head>
  <script >
+     var xmlHttp;
+function getNum()
+{
+    xmlHttp = new XMLHttpRequest();
+    var result = "http://localhost/orange.php";
+    xmlHttp.onreadystatechange = callBack;
+}
+
+function callBack(){
+    if(xmlHttp.readyState == 4 && xmlHttp.status=200){
+        var theDiv = document.getElementById("result").innerHTML = xmlHttp.responseText;
+    }
+}
+
  function changeContent()
  {
+    var result = "http://localhost/orange.php";
      var theDiv = document.getElementById("content");
-     theDiv.innerHTML = "<h1> Call me zaddy</h1>"
+     theDiv.innerHTML = result;
  }
  </script>
 
@@ -15,6 +30,10 @@
 <h1 id="content">
 What should i call you?
 </h1>
+
+<div id="result">
+
+</div>
 
 <button onclick="changeContent()">Answer</button>
 </body>
